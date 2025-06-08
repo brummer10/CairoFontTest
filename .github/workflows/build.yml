@@ -1,0 +1,20 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  linux:
+    strategy:
+      matrix:
+        target: [linux-x86_64]
+    runs-on: ubuntu-22.04
+    permissions:
+        contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: distrho/dpf-makefile-action@v1
+        with:
+          target: ${{ matrix.target }}
+          lto: false
+          pawpaw: true
