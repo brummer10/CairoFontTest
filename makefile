@@ -8,4 +8,4 @@ all:
 clean:
 	@rm -f cairo_font_test
 
-features:
+features: all
