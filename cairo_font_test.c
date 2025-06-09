@@ -9,10 +9,6 @@
 
 // gcc -g cairo_font_test.c  -lX11 `pkg-config --cflags --libs cairo` -o cairo_font_test 
 
-#ifndef FONTCONFIG_PATH
-#define FONTCONFIG_PATH "/etc/fonts"
-#endif
-
 // resize window
 typedef struct {
     double x;
@@ -104,6 +100,11 @@ static void resize_event(viewport *v) {
 
 int main(int argc, char* argv[])
 {
+    #ifdef FONTCONFIG_PATH
+    fprintf(stderr, "%s\n", FONTCONFIG_PATH);
+    #else
+    fprintf(stderr, "FONTCONFIG_PATH not defined\n");
+    #endif
     viewport v;
     v.display = XOpenDisplay(NULL);
     v.w = 320;
