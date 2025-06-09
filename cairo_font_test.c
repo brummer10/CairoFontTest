@@ -9,6 +9,10 @@
 
 // gcc -g cairo_font_test.c  -lX11 `pkg-config --cflags --libs cairo` -o cairo_font_test 
 
+#ifndef FONTCONFIG_PATH
+#define FONTCONFIG_PATH "/etc/fonts"
+#endif
+
 // resize window
 typedef struct {
     double x;
